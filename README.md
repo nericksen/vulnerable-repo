@@ -20,7 +20,7 @@ Access `http://localhost:8080/` and you will see it print out your client header
 Attacker Docker Image
 
 ```
-docker run -p 8090:8090 --name attacker -d -it debian:latest
+docker run -p 8090:8090 -p 4443:4443 --name attacker -d -it debian:latest
 docker exec -it attacker /bin/bash
 apt update
 apt install ncat

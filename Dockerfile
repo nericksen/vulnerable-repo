@@ -5,8 +5,12 @@ FROM golang:1.19
 # Set destination for COPY
 WORKDIR /app
 
+RUN apt update                                                                                                                                        
+RUN apt install -y ncat
+
 # Download Go modules
-COPY go.mod go.sum ./
+#COPY go.mod go.sum ./
+COPY go.mod ./
 RUN go mod download
 
 # Copy the source code. Note the slash at the end, as explained in
