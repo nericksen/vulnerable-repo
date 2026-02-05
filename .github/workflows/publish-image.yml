@@ -31,11 +31,7 @@ jobs:
         with:
           images: ghcr.io/${{ github.repository }}
           # Apply the 'latest' tag only for pushes to the main branch
-          tags: |
-            type=raw,value=latest,enable={{isSourceBranch('main')}}
-            type=sha,format=short
-            type=ref,event=branch
-
+          tags: type=raw,value=latest
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
