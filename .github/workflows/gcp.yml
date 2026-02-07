@@ -30,7 +30,7 @@ jobs:
         # Replace with your Project ID and image name
         env:
           PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
-          IMAGE_NAME: vulnerable-images
+          IMAGE_NAME: vulnerable-repo
           IMAGE_TAG: latest
         run: |-
           # Define the full image name
