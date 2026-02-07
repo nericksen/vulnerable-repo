@@ -24,6 +24,7 @@ jobs:
       - name: Configure Docker to use gcloud credentials
         run: |-
           gcloud auth configure-docker
+          gcloud auth configure-docker europe-north1-docker.pkg.dev
 
       - name: Build and push Docker image
         # Replace with your Project ID and image name
